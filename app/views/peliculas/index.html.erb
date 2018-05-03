@@ -1,0 +1,36 @@
+
+<div class="row">
+  <div class="col-md-12">
+    <h1 class="text-center titulo">Peliculas</h1>
+
+      <table class="table table-sriped">
+        <thead class="thead-dark">
+          <tr>
+            <th>Titulo</th>
+            <th>Anio</th>
+            <th>Puntuacion</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @peliculas.each do |pelicula| %>
+            <tr>
+              <td><%= pelicula.title  %></td>
+              <td><%= pelicula.year  %></td>
+              <td><%= pelicula.rating  %></td>
+              <td>
+                  <%= link_to "Ver", pelicula_path(pelicula.id), class: "btn-success"%>
+                  <%= link_to "Editar", edit_pelicula_path(pelicula.id), class: "btn-primary"%>
+                  <%= link_to "Eliminar", pelicula_path(pelicula.id) , method: :delete,
+                     data: { confirm: 'Estas seguro? ' },
+                     class: "btn-danger"%>
+              </td>
+            </tr>
+            <% end %>
+        </tbody>
+      </table>
+    <%= link_to "Añadir pelicula", new_pelicula_path ,class: "btn btn-success" %>
+
+  </div>
+
+</div>
